@@ -1,0 +1,1 @@
+export async function submitInquiry(_data: unknown) { void _data; return {message:'Demo only: your form was validated, but nothing was sent or saved. Please call or email the practice to inquire.'}; }

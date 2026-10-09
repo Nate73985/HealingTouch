@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Add a Sitemap line after the production origin is approved.
