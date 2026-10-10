@@ -28,3 +28,6 @@ Dates use YYYY-MM-DD calendar dates in the visitor’s local timezone. End dates
 Testimonials are empty pending explicit reuse approval. Add only approved quote/name pairs with approved true. No fabricated reviews, ratings or social accounts. Privacy and Terms are review placeholders. Accessibility copy describes implemented features without claiming certification.
 
 Before publishing, approve hero photography, replace the temporary monogram with the official unchanged logo, confirm physician image reuse permission, reconcile pricing, approve Premium terminology and any tier details, review all legal copy and integrate a real form service if desired.
+
+## Executive concept presentation
+The owner-provided October 9 Premium brief supplies the conceptual starting price of USD 99,999 annually, five primary privileges and six supporting privileges. These are proposal content, not verified current practice offerings. Edit src/data/premium.ts for the Premium page and src/data/memberships.ts for its linked membership card. The page-bottom disclaimer and global footer explain the concept status. No checkout, gym partner, guaranteed specialist timing or emergency transportation is represented.

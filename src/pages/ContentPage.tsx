@@ -1,5 +1,5 @@
 import {useLocation,Link} from 'react-router-dom';
-import {Benefits,Button,Heading,MembershipCards,Physician,FAQList,OffersEmpty,ContactDetails,PremiumCTA} from '../components/Shared';
+import {Button,Heading,MembershipCards,Physician,FAQList,OffersEmpty,ContactDetails,PremiumCTA} from '../components/Shared';
 import InquiryForm from '../components/InquiryForm';
 import {services} from '../data/services';
 import {promotions} from '../data/promotions';
@@ -22,7 +22,6 @@ const titles:Record<string,[string,string,string]>={
 };
 export default function ContentPage(){const {pathname}=useLocation();const title=titles[pathname];if(!title)return <section className="section not-found"><span className="eyebrow">404 · A DIFFERENT PATH</span><h1>Let’s get you back home.</h1><p>This page could not be found.</p><Button to="/">Return home</Button></section>;
 return <><section className="page-intro"><span className="eyebrow">{title[0]}</span><h1>{title[1]}</h1><p>{title[2]}</p></section><section className="section page-content">
-{pathname==='/premium'&&<><Heading eyebrow="HEALTHCARE, ELEVATED" title="Care Designed Around You.">Our Premium concept reflects the practice’s established philosophy. Additional Premium privileges and tier details are available upon inquiry and remain subject to approval.</Heading><Benefits/><div className="process"><h2>A thoughtful first step.</h2><ol><li>Explore the practice and its care philosophy.</li><li>Contact us to discuss your priorities and membership questions.</li><li>Confirm the care arrangement and terms before enrolling.</li></ol><Button to="/contact?interest=Premium">Explore your options</Button><button className="audio-placeholder" disabled>Listen to Our Welcome · Coming soon</button></div></>}
 {pathname==='/about'&&<Physician full/>}
 {pathname==='/memberships'&&<><MembershipCards/><div className="process"><h2>Clarity before commitment.</h2><p>Membership covers primary care at the practice, and is not insurance. Labs, imaging, medications, assessments, specialty and hospital care may involve separate costs. Ask for current inclusions, fees and cancellation terms.</p><Link className="text-link" to="/faq">Read membership FAQs →</Link></div></>}
 {pathname==='/offers'&&<>{promotions.filter(p=>isPromotionActive(p)).length===0&&<OffersEmpty/>}<div className="service-grid">{promotions.filter(p=>p.active&&getPromotionStatus(p)!=='expired').map(p=><article className="service-card" key={p.id}>{p.image&&<img src={asset(p.image)} alt="" width="600" height="400" loading="lazy"/>}<span className="eyebrow">{getPromotionStatus(p)}</span><h2>{p.title}</h2><p>{p.description}</p><p>Eligibility: {p.eligibility}</p><p>{p.terms}</p>{p.endDate&&<p>{getDaysRemaining(p)} days until the end date</p>}{isPromotionActive(p)&&<Button to={p.ctaUrl}>{p.ctaLabel}</Button>}</article>)}</div></>}
@@ -34,5 +33,6 @@ return <><section className="page-intro"><span className="eyebrow">{title[0]}</s
 {['/privacy','/terms'].includes(pathname)&&<div className="legal-placeholder"><h2>Local review placeholder</h2><p>This page awaits review and approval by the practice’s legal adviser. It is not a complete policy.</p><p>The demo inquiry form validates information on your device without sending or saving it. No analytics, patient portal or third-party form service is configured. Do not enter sensitive healthcare information.</p><Button to="/contact">Contact the practice</Button></div>}
 {pathname==='/accessibility'&&<><h2>Designed for access.</h2><p>This site includes keyboard navigation, visible focus indicators, a skip link, semantic form labels, responsive layouts and reduced-motion support. Accessibility conformance has not been independently certified.</p><p>For help accessing practice information, call the practice or use the contact details below.</p><ContactDetails/></>}
 </section>{!['/contact','/privacy','/terms','/accessibility'].includes(pathname)&&<PremiumCTA/>}</>}
+
 
 
